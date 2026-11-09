@@ -1,0 +1,73 @@
+ body {
+            background-color: #05030a;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Continuous Endless Marquee Keyframes (Triplicated Track - 33.333% Shift) */
+        .marquee-track-left {
+            display: flex;
+            width: max-content;
+            animation: scrollLeft 32s linear infinite;
+        }
+
+        .marquee-track-right {
+            display: flex;
+            width: max-content;
+            animation: scrollRight 32s linear infinite;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+
+        @keyframes scrollRight {
+            0% { transform: translateX(-33.3333%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-container:hover .marquee-track-left,
+        .marquee-container:hover .marquee-track-right {
+            animation-play-state: paused;
+        }
+
+        /* Clean Border Input Styling (No Gradients) */
+        .custom-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-radius: 0px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #b388ff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Lightbox Overlay Animation */
+        .lightbox-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Scroll Reveal Effect for Story Section */
+        .story-reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .story-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }

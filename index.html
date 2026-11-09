@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Elisètra | Video Editor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPurple: '#b388ff',
+                        darkBg: '#05030a',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="relative min-h-screen text-slate-100 antialiased selection:bg-brandPurple selection:text-black">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 px-6 py-5 bg-black/90 border-b border-white/10 backdrop-blur-md flex justify-between items-center">
+        <a href="#" class="text-base tracking-widest font-extrabold text-white uppercase">
+            SAMUEL ELISÈTRA
+        </a>
+        <a href="#contact-form" class="text-xs uppercase tracking-widest font-bold px-4 py-2 border border-white/20 text-white hover:bg-white hover:text-black transition-colors duration-200">
+            Book an Edit
+        </a>
+    </header>
+
+    <!-- SECTION 1: HERO (AMBIENT CITYSCAPE VIDEO + SPLIT GRID) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden border-b border-white/10">
+        
+        <!-- Ambient Cityscape Background Video -->
+        <div class="absolute inset-0 z-0 overflow-hidden opacity-100">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="media/samuel-backvid.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-darkBg/70"></div>
+        </div>
+
+        <!-- Hero Content Split Grid -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            
+            <!-- Left Column: Square Headshot + Name + Bio Stats -->
+            <div class="flex flex-col items-start gap-6">
+                <!-- Square Headshot (No Cards, No Glow) -->
+                <div class="w-72 md:w-96 aspect-square overflow-hidden rounded-full border border-white/20 relative">
+                    <img src="media/samuel.jpg" alt="Samuel Elisètra" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Name & Subtitle -->
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight uppercase leading-none text-white">
+                        Samuel <br><span class="text-brandPurple">Elisètra</span>
+                    </h1>
+                    <p class="mt-4 text-sm md:text-base text-slate-300 max-w-md font-light leading-relaxed">
+                        Short-form video editor specializing in retention-driven storytelling, viral hooks, and high-impact pacing.
+                    </p>
+
+                    <!-- Bio Stats Row (Integrated from Instagram Bio) -->
+                    <div class="mt-6 flex flex-wrap gap-4 border-t border-b border-white/10 py-4 max-w-md font-mono text-xs">
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <div class="text-white font-bold text-lg">1M Views</div>
+                                <div class="text-slate-400 text-sm">In 5 days from scratch</div>
+                            </div>
+                        </div>
+                        <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <div class="text-brandPurple font-bold text-lg">+50M Views</div>
+                                <div class="text-slate-400 text-sm">For my clients</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Vertical Intake Form -->
+            <div id="contact-form" class="w-full max-w-md mx-auto md:ml-auto">
+                <div class="mb-6">
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandPurple">Inquiries</span>
+                    <h2 class="text-2xl font-bold text-white mt-1">Start a Project</h2>
+                </div>
+
+                <form onsubmit="handleFormSubmit(event)" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Your Name</label>
+                        <input type="text" required placeholder="John Doe" class="custom-input w-full px-4 py-3 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Email Address</label>
+                        <input type="email" required placeholder="john@example.com" class="custom-input w-full px-4 py-3 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Project Type</label>
+                        <select class="custom-input w-full px-4 py-3 text-sm bg-darkBg text-white">
+                            <option value="reels">TikTok / Instagram Reels (Short Form)</option>
+                            <option value="youtube">YouTube Long Form / Retention Edit</option>
+                            <option value="brand">Brand Campaign & Ads</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Project Details</label>
+                        <textarea rows="3" required placeholder="Describe your channel, goals, or edit requirements..." class="custom-input w-full px-4 py-3 text-sm resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 text-xs font-extrabold uppercase tracking-widest text-black bg-brandPurple hover:bg-white transition-colors mt-2">
+                        Send Inquiry
+                    </button>
+
+                    <div id="formSuccess" class="hidden text-xs text-brandPurple font-mono text-center pt-2">
+                        ✓ Message received! Samuel will respond within 24 hours.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: MY STORY (9:16 STORY VIDEO WITH CONTROLS LEFT + NARRATIVE RIGHT) -->
+    <section id="story" class="relative z-10 max-w-6xl mx-auto px-6 py-28 border-b border-white/10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Side: 9:16 Vertical Story Video (5 cols) with Playback Controls -->
+            <div class="md:col-span-5 story-reveal">
+                <div class="w-full max-w-sm mx-auto aspect-[9/16] relative bg-black border border-white/20 overflow-hidden">
+                    <video controls loop playsinline class="w-full h-full object-cover">
+                        <source src="media/samuel-introvid.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- Right Side: Narrative Story Text (7 cols) -->
+            <div class="md:col-span-7 story-reveal flex flex-col gap-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandPurple">About / Journey</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-white mt-2">
+                        "My Story"
+                    </h2>
+                </div>
+
+                <div class="flex flex-col gap-6 text-slate-300 text-base md:text-lg font-light leading-relaxed">
+                    <p>
+                        Video editing isn't just cutting clips together—it's managing human attention spans frame by frame. 
+                        Moving across the globe to China, I documented every step of my daily journey as a full-time editor, testing retention hooks, captioning styles, and sound design techniques in real-time.
+                    </p>
+                    <p class="text-white font-medium pl-4 border-l-2 border-brandPurple italic">
+                        "I waited almost 1 year for this opportunity. High retention isn't luck—it's engineered."
+                    </p>
+                    <p>
+                        From fast-paced viral reels to cinematic storytelling, my goal is simple: keep your audience hooked from second zero to the final frame.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 3: ENDLESS PORTFOLIO WALL (DUAL MARQUEE) -->
+    <section id="portfolio" class="py-28 relative z-10 overflow-hidden">
+        
+        <div class="max-w-6xl mx-auto px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-brandPurple">Portfolio</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-white mt-1">Featured Edits</h2>
+            </div>
+            <p class="text-xs text-slate-400 font-mono">
+                Click any clip to enter Focus Player Mode
+            </p>
+        </div>
+
+        <!-- Marquee Row 1: Left Scroll -->
+        <div class="marquee-container w-full overflow-hidden mb-8">
+            <div class="marquee-track-left flex gap-6">
+                <!-- 3 Identical Sets for Seamless Infinite Loop -->
+                <script>
+                    const renderRowItems = (rowId) => {
+                        const items = [
+                            { title: 'Day 4: Living in China', src: 'media/samuel-clip1.mp4' },
+                            { title: 'Retention Hook Test', src: 'media/samuel-clip2.mp4' },
+                            { title: 'Viral Sound Design', src: 'media/samuel-clip3.mp4' },
+                            { title: 'Pacing Breakdown', src: 'media/samuel-clip4.mp4' },
+                        ];
+                        // Repeat 3 times
+                        const triple = [...items, ...items, ...items];
+                        return triple.map((item, idx) => `
+                            <div onclick="openLightbox('${item.src}', '${item.title}')" class="w-48 md:w-64 aspect-[9/16] relative border border-white/20 bg-black cursor-pointer group flex-shrink-0 overflow-hidden">
+                                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                    <source src="${item.src}" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors"></div>
+                                <div class="absolute bottom-3 left-3 right-3 p-2 bg-black/90 border border-white/10 text-[11px] text-white flex justify-between items-center">
+                                    <span class="truncate font-mono">${item.title}</span>
+                                    <span class="text-brandPurple font-bold">▶</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    };
+                    document.write(renderRowItems(1));
+                </script>
+            </div>
+        </div>
+
+        <!-- Marquee Row 2: Right Scroll -->
+        <div class="marquee-container w-full overflow-hidden">
+            <div class="marquee-track-right flex gap-6">
+                <script>
+                    const renderRow2Items = () => {
+                        const items = [
+                            { title: 'Fast Vlog Cut', src: 'media/samuel-clip3.mp4' },
+                            { title: 'China Day 12', src: 'media/samuel-clip4.mp4' },
+                            { title: 'Short Form Masterclass', src: 'media/samuel-clip1.mp4' },
+                            { title: 'Editing Workflow', src: 'media/samuel-clip2.mp4' },
+                        ];
+                        const triple = [...items, ...items, ...items];
+                        return triple.map((item, idx) => `
+                            <div onclick="openLightbox('${item.src}', '${item.title}')" class="w-48 md:w-64 aspect-[9/16] relative border border-white/20 bg-black cursor-pointer group flex-shrink-0 overflow-hidden">
+                                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                    <source src="${item.src}" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors"></div>
+                                <div class="absolute bottom-3 left-3 right-3 p-2 bg-black/90 border border-white/10 text-[11px] text-white flex justify-between items-center">
+                                    <span class="truncate font-mono">${item.title}</span>
+                                    <span class="text-brandPurple font-bold">▶</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    };
+                    document.write(renderRow2Items());
+                </script>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/10 text-center text-xs text-slate-500 font-mono uppercase tracking-widest">
+        © 2026 Samuel Elisètra. All Rights Reserved.
+    </footer>
+
+    <!-- FOCUS LIGHTBOX MODAL (DISTRACTION-FREE SINGLE VIDEO PLAYER) -->
+    <div id="videoLightbox" class="lightbox-overlay fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-brandPurple text-xl font-mono px-4 py-2 border border-white/20">
+            [ ✕ CLOSE ]
+        </button>
+
+        <div class="w-full max-w-sm aspect-[9/16] relative bg-black border border-white/30 flex flex-col justify-between overflow-hidden shadow-2xl">
+            <video id="lightboxVideo" autoplay loop controls class="w-full h-full object-cover">
+                <source id="lightboxSource" src="" type="video/mp4">
+            </video>
+            <div id="lightboxTitle" class="absolute bottom-4 left-4 right-4 p-3 bg-black/90 border border-white/20 text-xs font-mono text-brandPurple">
+                Title Placeholder
+            </div>
+        </div>
+    </div>
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
